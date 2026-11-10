@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "synthetic-utah-to-nwb"
+version = "0.1.0"
+description = "NeuroConv conversion of a simulated multi-port Utah array walking session to NWB."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+dependencies = [
+    "neuroconv[ecephys-minimal]==0.10.2",
+    "pandas",
+]
+
+[project.optional-dependencies]
+test = ["pytest", "nwbinspector"]
+
+[tool.setuptools.package-data]
+synthetic_utah_to_nwb = ["metadata.yaml"]
+
+[tool.black]
+line-length = 120

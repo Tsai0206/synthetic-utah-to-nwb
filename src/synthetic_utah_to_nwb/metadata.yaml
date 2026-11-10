@@ -1,0 +1,48 @@
+# Session-independent metadata. Per-session fields (start time, session_id, subject_id) come from session.json.
+NWBFile:
+  session_description: >
+    Simulated walking session from a fictional client lab. Wideband voltage from four 64-electrode
+    Utah arrays, recorded in blocks through one 128-channel headstage that is moved between two
+    pedestal ports, with hip and shoulder joint angles and annotated gait cycles.
+  experiment_description: >
+    Motor cortical activity during treadmill and overground walking, recorded to relate
+    population activity to the phase of the step cycle.
+  institution: Example University
+  lab: Example Motor Control Lab
+  experimenter:
+    - Doe, Jane
+  keywords:
+    - Utah array
+    - locomotion
+    - motor cortex
+    - simulated data
+
+Subject:
+  species: Macaca mulatta
+  sex: M
+  age: P8Y
+  description: Fictional subject. Every value in this file is simulated.
+
+DeviceModels:
+  utah_8x8:
+    name: UtahArray8x8
+    manufacturer: Blackrock Neurotech
+    description: 8 x 8 silicon microelectrode array, 64 recording electrodes.
+
+Devices:
+  array1: {name: UtahArray1, description: Chronically implanted Utah array 1., device_model_metadata_key: utah_8x8}
+  array2: {name: UtahArray2, description: Chronically implanted Utah array 2., device_model_metadata_key: utah_8x8}
+  array3: {name: UtahArray3, description: Chronically implanted Utah array 3., device_model_metadata_key: utah_8x8}
+  array4: {name: UtahArray4, description: Chronically implanted Utah array 4., device_model_metadata_key: utah_8x8}
+
+Ecephys:
+  ElectrodeGroups:
+    array1: {name: array1, description: Electrodes of Utah array 1 (pedestal port A)., location: M1, device_metadata_key: array1}
+    array2: {name: array2, description: Electrodes of Utah array 2 (pedestal port A)., location: PMd, device_metadata_key: array2}
+    array3: {name: array3, description: Electrodes of Utah array 3 (pedestal port B)., location: PMv, device_metadata_key: array3}
+    array4: {name: array4, description: Electrodes of Utah array 4 (pedestal port B)., location: S1, device_metadata_key: array4}
+  Electrodes:
+    - name: port
+      description: Pedestal port (A or B) the headstage was plugged into when this electrode was recorded.
+    - name: nsp_channel
+      description: Channel number on the 256-channel acquisition system (port B adds 128 to the headstage channel).
